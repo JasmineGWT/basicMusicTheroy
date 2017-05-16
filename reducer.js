@@ -10,8 +10,8 @@ module.exports = (state, action) => {
     case 'CHANGE_ROUTE':
       newState.route = payload
       return newState
-    case 'TOGGLE_SHOW_SCALE':
-      newState.showScale = !newState.showScale
+    case 'TOGGLE':
+      newState[payload] = !newState[payload]
       return newState
     default:
       return newState
