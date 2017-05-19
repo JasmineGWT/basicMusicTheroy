@@ -16,7 +16,8 @@ document.querySelector('main').appendChild(app)
 const initialState = {
   key: 'A',
   route: '/',
-  showMajorScale: false
+  showMajorScale: false,
+  showChordsInScale: false
 }
 
 var store = createStore(reducer, initialState)

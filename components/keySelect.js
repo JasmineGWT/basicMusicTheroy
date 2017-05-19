@@ -9,7 +9,7 @@ module.exports = ({state, dispatch}) => {
   }
 
   const renderMajorScale = () => {
-    var e = state.showMajorScale ? <h1>{makeMajorScale(state, dispatch).toString()}</h1> : ""
+    var e = state.showMajorScale ? <div><h1>{makeMajorScale(state, dispatch).toString()}</h1></div> : <h1>Major Scale</h1>
     return e
   }
 
@@ -18,21 +18,21 @@ module.exports = ({state, dispatch}) => {
   }
 
   const renderChordsInScale = () => {
-    var e = state.showChordsInScale ? <h1>{chordsInScale(state, dispatch).toString()}</h1> : ""
+    var e = state.showChordsInScale ? <h1>{chordsInScale(state, dispatch).toString()}</h1> : <h1>Chords</h1>
     return e
   }
 
   return (
     <div>
-      <div className="inputKey">
-        <input onChange={(e) => dispatch({type: 'CHANGE_KEY', payload: {change: 'key', value: e.target.value}})} type="text" placeholder="Select Key" />
+      <div>
+        <input className="inputKey" onChange={(e) => dispatch({type: 'CHANGE_KEY', payload: {change: 'key', value: e.target.value}})} type="text" placeholder="Enter Key" />
       </div>
-      <div className="optionButtons">
-        <button onClick={toggleMajorScale}>Major Scale</button>
-        <button onClick={toggleChordsInScale}>Chords</button>
+      <div onClick={toggleMajorScale} className="infoDiv">
+        {renderMajorScale()}
       </div>
-      {renderMajorScale()}
-      {renderChordsInScale()}
+      <div onClick={toggleChordsInScale} className="infoDiv">
+        {renderChordsInScale()}
+      </div>
     </div>
   )
 
