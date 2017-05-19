@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 module.exports = (state, dispatch) => {
 
   var scaleYouWant = state.key
-  var notesArray = ['A', 'A#/B*', 'B', 'C', 'C#/D*', 'D', 'D#/E*', 'E', 'F', 'F#/G*', 'G', 'G#/A*']
+  var notesArray = ['C', 'C#/D*', 'D', 'D#/E*', 'E', 'F', 'F#/G*', 'G', 'G#/A*', 'A', 'A#/B*', 'B']
   var firstHalf = notesArray.slice(0, notesArray.indexOf(scaleYouWant)+1)
   var secondHalf = notesArray.splice(notesArray.indexOf(scaleYouWant))
   var newArray = secondHalf.concat(firstHalf)
