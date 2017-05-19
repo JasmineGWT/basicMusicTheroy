@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import makeMajorScale from './makeMajorScale'
 import chordsInScale from './chordsInScale'
+import notesInChord from './notesInChord'
 
 module.exports = ({state, dispatch}) => {
 
@@ -18,7 +19,16 @@ module.exports = ({state, dispatch}) => {
   }
 
   const renderChordsInScale = () => {
-    var e = state.showChordsInScale ? <h1>{chordsInScale(state, dispatch).toString()}</h1> : <h1>Chords</h1>
+    var e = state.showChordsInScale ? <h1>{chordsInScale(state, dispatch).toString()}</h1> : <h1>Chords in this key</h1>
+    return e
+  }
+
+  const toggleNotesInChord = () => {
+    dispatch({type: 'TOGGLE', payload: 'showNotesInChord'})
+  }
+
+  const renderNotesInChord = () => {
+    var e = state.showNotesInChord ? <h1>{notesInChord(state, dispatch).toString()}</h1> : <h1>Notes in this chord</h1>
     return e
   }
 
@@ -32,6 +42,9 @@ module.exports = ({state, dispatch}) => {
       </div>
       <div onClick={toggleChordsInScale} className="infoDiv">
         {renderChordsInScale()}
+      </div>
+      <div onClick={toggleNotesInChord} className="infoDiv">
+        {renderNotesInChord()}
       </div>
     </div>
   )
